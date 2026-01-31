@@ -22,7 +22,7 @@ let package = Package(
         .executableTarget(
             name: "Example",
             dependencies: ["MiniAudio"],
-            resources: [.copy("loop.mp3")]
+            resources: [.copy("Audio/loop.mp3")]
         ),
         .testTarget(
             name: "MiniAudioTests",
