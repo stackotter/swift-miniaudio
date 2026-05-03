@@ -13,10 +13,30 @@ let package = Package(
     targets: [
         .target(
             name: "MiniAudio",
-            dependencies: ["MiniAudioC"]
+            dependencies: [
+                .target(
+                    name: "MiniAudioC",
+                    condition: .when(platforms: [
+                        .macOS, .macCatalyst, .windows, .linux, .android, .wasi
+                    ])
+                ),
+                .target(
+                    name: "MiniAudioObjC",
+                    condition: .when(platforms: [
+                        .iOS, .tvOS, .visionOS, .watchOS
+                    ])
+                )
+            ]
         ),
         .target(
             name: "MiniAudioC",
+            exclude: ["impl.m"],
+            cSettings: [.define("MINIAUDIO_IMPLEMENTATION")]
+        ),
+        .target(
+            name: "MiniAudioObjC",
+            path: "Sources/MiniAudioC",
+            exclude: ["impl.c"],
             cSettings: [.define("MINIAUDIO_IMPLEMENTATION")]
         ),
         .executableTarget(
