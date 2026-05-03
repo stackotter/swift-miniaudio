@@ -1,4 +1,9 @@
-import MiniAudioC
+#if os(iOS) || os(tvOS) || os(visionOS)
+    import MiniAudioObjC
+#else
+    import MiniAudioC
+#endif
+
 import Foundation
 
 func checkResult(_ result: ma_result) throws {
