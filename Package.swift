@@ -17,13 +17,13 @@ let package = Package(
                 .target(
                     name: "MiniAudioC",
                     condition: .when(platforms: [
-                        .macOS, .macCatalyst, .windows, .linux, .android, .wasi
+                        .macOS, .windows, .linux, .android, .wasi
                     ])
                 ),
                 .target(
                     name: "MiniAudioObjC",
                     condition: .when(platforms: [
-                        .iOS, .tvOS, .visionOS, .watchOS
+                        .macCatalyst, .iOS, .tvOS, .visionOS, .watchOS
                     ])
                 )
             ]

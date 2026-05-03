@@ -1,4 +1,5 @@
-#if (os(iOS) || os(tvOS) || os(visionOS)) && !targetEnvironment(macCatalyst)
+#if os(iOS) || os(tvOS) || os(visionOS)
+    // This includes macCatalyst under os(iOS)
     import MiniAudioObjC
 #else
     import MiniAudioC
